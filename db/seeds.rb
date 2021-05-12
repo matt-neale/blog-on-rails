@@ -11,8 +11,8 @@ Post.destroy_all()
 60.times do |x|
   created_at = Faker::Date.backward(days: 365)
   post = Post.create({
-    title: "#{Faker::Games::Pokemon.name}-#{rand(1_000_000_000)}",
-    body: Faker::Lorem.words,
+    title: Faker::Games::Pokemon.name,
+    body: Faker::Lorem.words(50),
     created_at: created_at,
     updated_at: created_at
   })

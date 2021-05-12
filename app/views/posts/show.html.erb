@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @post.title %></h5>
+    
+    <p class="card-text"><%= @post.body %></p>
+    <small>Posted <%= time_ago_in_words(@post.created_at)%> ago</small><br><br>
+    <div id="buttonPair">
+    <%= link_to("Edit", edit_post_path(@post), class: "btn btn-success btn-xs pull-right") %>
+    <%= button_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs pull-right" %>
+    </div>
+  </div>
+</div>
