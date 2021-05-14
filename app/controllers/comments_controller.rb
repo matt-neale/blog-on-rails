@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment.post=@post
     
     if @comment.save
-      redirect_to post_path(@post), notice: 'Comment created'
+      redirect_to post_path(@post), notice: 'Comment created!'
     else 
-      render '/ideas/show'
+      redirect_to post_path(@post)
     end
   end
 

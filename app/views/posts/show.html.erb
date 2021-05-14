@@ -2,7 +2,7 @@
   <div class="card-body">
     <h1 class="card-title"><%= @post.title %></h1>
     
-    <p class="card-text"><%= @post.body %></p>
+    <div class="card-text"><%= @post.body %></div>
     <small>Posted <%= time_ago_in_words(@post.created_at)%> ago</small><br><br>
     <div id="buttonPair">
     <%= link_to("Edit", edit_post_path(@post), class:"btn btn-outline-primary") %>

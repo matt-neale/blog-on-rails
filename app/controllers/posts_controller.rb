@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update post_params
-      flash[:notice] = "Post updated"
+      flash[:notice] = "Post updated!"
       redirect_to post_path(@post)
     else
       render :edit
