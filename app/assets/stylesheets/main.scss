@@ -3,3 +3,81 @@
 row {
   width: 30px;
 }
+
+.button_to {
+  margin: 0px;
+}
+
+form {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+nav {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#brandName {
+  font-size: 30px;
+  color: blueviolet !important;
+  font-family: Andale Mono, monospace !important;
+}
+
+.card-title {
+  margin-left: 0px;
+  color: blueviolet !important;
+}
+
+.card-body {
+  padding: 5px;
+  margin: 20px;
+}
+
+#message-block {
+  margin: 20px;
+}
+
+h1 {
+  margin: 20px;
+}
+
+h3 {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-weight: bolder;
+}
+
+#index-cards {
+  width: 500px;
+  height: 160px;
+  overflow: hidden;
+}
+
+#buttonPair {
+  display: flex;
+}
+
+input.btn {
+  margin-left: 5px;
+}
+
+div.col-sm-4 {
+  padding-left: 30px;
+}
+
+navbar {
+  display: flex;
+}
+
+#navbarSupportedContent {
+  justify-content: flex-end;
+}
+a.nav-link {
+  color: blueviolet !important;
+  font-family: Andale Mono, monospace !important;
+  margin-left: 15px;
+}
+
+form.label {
+}

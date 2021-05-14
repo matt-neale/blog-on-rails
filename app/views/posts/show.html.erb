@@ -1,12 +1,35 @@
-<div class="card" style="width: 18rem;">
+<div id="show-card" class="card" >
   <div class="card-body">
-    <h5 class="card-title"><%= @post.title %></h5>
+    <h1 class="card-title"><%= @post.title %></h1>
     
     <p class="card-text"><%= @post.body %></p>
     <small>Posted <%= time_ago_in_words(@post.created_at)%> ago</small><br><br>
     <div id="buttonPair">
-    <%= link_to("Edit", edit_post_path(@post), class: "btn btn-success btn-xs pull-right") %>
-    <%= button_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs pull-right" %>
+    <%= link_to("Edit", edit_post_path(@post), class:"btn btn-outline-primary") %>
+    <%= button_to("Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-outline-primary") %>
     </div>
   </div>
 </div>
+<h3>Comment</h3> 
+<%= form_with(model:[@post, @comment], local:true) do |f| %>
+  <% if @comment.errors.full_messages.each do |msg|%>
+  <ul>
+    <li> <%= msg %></li>
+  </ul>
+  <% end %>
+<% end %>
+<div class="mb-3">
+    <%= f.text_area(:body, cols: 100, rows:3, placeholder: 'Comment on this post!', class:"form-control")%>
+</div>
+    <%= f.submit "Submit", class:"btn btn-outline-primary" %>
+<% end %>
+<hr>
+<% @comments.each do |comment|%>
+  <div id="message-block">
+    <%= comment.body %>
+    <br>
+    <small>Created: <%= time_ago_in_words(comment.created_at)%> ago ● </small><%= link_to("Delete", post_comment_path(@post,comment), method: :delete, data:{confirm: 'Are you sure?'})%>
+    <hr>
+
+  </div>
+<% end %>

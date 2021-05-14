@@ -11,26 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap
- *= require main
  *= require_tree .
  *= require_self
  */
-
-form {
-  margin: 30px;
-}
-
-nav {
-  font-size: 20px;
-  color: blue;
-  margin-bottom: 10px;
-}
-
-#brandName {
-  font-size: 25px;
-}
-
-.card-body {
-  padding: 5px;
-  margin: 20px;
-}
