@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   validates :title, presence: {message: "must be present!"}, uniqueness: true
   validates :body, presence: {message: "must be present!"}, length: {minimum: 50}
 
+  belongs_to :user
+  
   private
 
   def capitalize_title
