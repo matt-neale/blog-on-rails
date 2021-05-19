@@ -1,0 +1,34 @@
+<h1>Sign up</h1>
+
+<div class='shadow-sm p-3 mb-5 bg-white rounded'>
+  <%= form_with model: @user, local: true do |f| %>
+      <% if @user.errors.any? %>
+          <p>
+          <%= @user.errors.full_messages.join(', ') %>
+          </p>
+      <% end %>
+
+      <div>
+          <%= f.label :first_name, class:"form-label" %>
+          <%= f.text_field :first_name, class:"form-control" %>
+      </div>
+      <div>
+          <%= f.label :last_name, class:"form-label" %>
+          <%= f.text_field :last_name, class:"form-control" %>
+      </div>
+      <div>
+          <%= f.label :email, class:"form-label" %>
+          <%= f.email_field :email, class:"form-control" %>
+      </div>
+      <div>
+          <%= f.label :password, class:"form-label" %>
+          <%= f.password_field :password, class:"form-control" %>
+      </div>
+      <div>
+          <%= f.label :password_confirmation, class:"form-label" %>
+          <%= f.password_field :password_confirmation, class:"form-control" %>
+      </div>
+
+      <%= f.submit "Sign Up", class:"btn btn-outline-primary" %>
+  <% end %>
+</div>

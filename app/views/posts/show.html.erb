@@ -28,6 +28,7 @@
   <div id="message-block">
     <%= comment.body %>
     <br>
+    <small> Comment by: <%= comment.user&.full_name || 'DELETED' %></small><br>
     <small>Created: <%= time_ago_in_words(comment.created_at)%> ago ● </small><%= link_to("Delete", post_comment_path(@post,comment), method: :delete, data:{confirm: 'Are you sure?'})%>
     <hr>
 

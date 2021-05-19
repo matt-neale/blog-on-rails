@@ -1,12 +1,15 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_post, only:[:create,:destroy]
 
   def create
     @comment=Comment.new comment_params
     @comment.post=@post
+    @review.user = @current_user
     
     if @comment.save
       redirect_to post_path(@post), notice: 'Comment created!'
+      
     else 
       redirect_to post_path(@post)
     end

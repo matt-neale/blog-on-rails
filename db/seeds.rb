@@ -38,7 +38,11 @@ end
   })
   if post.persisted?  # we can also use .valid? to check the data that is entered in db was valid or not
     post.comments= rand(0..10).times.map do
-        Comment.new(body: Faker::Games::Pokemon.location)
+        Comment.new(
+          body: Faker::Games::Pokemon.location,
+          user: users.sample,
+          created_at: created_at,
+        )
     end
   end
 end
