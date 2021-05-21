@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "posts#index"
 
-  resources :users, only: [:new, :create]
+  get "/users/:id/edit/password", to: 'users#password', as: 'password'
+
+  resources :users, only: [:new, :create, :edit, :update]
   resource :session, only: [:new, :create, :destroy]
 
   resources :posts do
