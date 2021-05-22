@@ -49,8 +49,8 @@ h3 {
 }
 
 #index-cards {
-  width: 500px;
-  height: 160px;
+  height: 200px;
+
   overflow: hidden;
 }
 
@@ -76,11 +76,28 @@ navbar {
 a.nav-link {
   color: blueviolet !important;
   font-family: Andale Mono, monospace !important;
-  margin-left: 15px;
+  margin-right: 15px;
 }
 
 p {
   background-color: red;
   color: white;
   text-align: center;
+}
+
+greeting {
+  padding: 0px;
+}
+
+users_name {
+  margin: 0px;
+}
+
+div.shadow-sm {
+  margin-left: -20px;
+}
+
+.btn-outline-primary {
+  margin-left: 0px !important;
+  margin-right: 20px;
 }
