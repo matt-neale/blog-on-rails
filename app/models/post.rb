@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   validates :title, presence: {message: "must be present!"}, uniqueness: true
   validates :body, presence: {message: "must be present!"}, length: {minimum: 50}
 
-  belongs_to :user
+  belongs_to :user, optional: true
   
   private
 

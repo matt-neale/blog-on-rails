@@ -21,9 +21,11 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
         <% if user_signed_in? %>
-          <span>Hello, <%= link_to "#{current_user.first_name}", edit_user_path(current_user) %>!</span>
+          <li id="greeting" class="nav-link disabled">Hello,</li>
+          <span id="users_name" class="nav-item d-flex"><%= link_to "#{current_user.first_name}", edit_user_path(current_user), class:"nav-link" %> </span>
+
           
-          <%= link_to "Log Out", session_path, method: :delete, class:"btn btn-outline-danger" %>
+          <%= link_to "Log Out", session_path, method: :delete, class:"nav-link", data: { confirm: "Are you sure you want to log out?" } %>
         <% else %>
           <span class="nav-item d-flex">
             <%= link_to "Log In", new_session_path, class:"nav-link" %>

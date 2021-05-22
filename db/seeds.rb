@@ -12,6 +12,14 @@ User.destroy_all()
 
 PASSWORD = 'supersecret'
 
+super_user= User.create(
+  first_name: "Jon",
+  last_name: 'Snow',
+  email: 'js@winterfell.gov',
+  password: PASSWORD,
+  is_admin: true
+)
+
 moves = 50.times.map do |x|
   Faker::Games::Pokemon.unique.move
 end
@@ -53,3 +61,4 @@ comments = Comment.all
 puts Cowsay.say("Generated #{users.count}  users!", :bunny)
 puts Cowsay.say("Generated #{posts.count} posts!", :dragon)
 puts Cowsay.say("Generated #{comments.count} comments!", :ghostbusters)
+puts Cowsay.say("Login with #{super_user.email} and password: #{PASSWORD}", :frogs)

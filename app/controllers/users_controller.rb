@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:edit, :update, :password, :update_password]
-  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update, :password, :update_password]
+  before_action :authorize_user!, only: [:edit, :update, :password, :update_password]
   
   def new
     @user = User.new
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "You have successfully created an account!"
+      flash[:notice] = "You have successfully created an account!"
       redirect_to root_path
     else
       render :new
@@ -35,13 +36,22 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    if @user.update user_params
-      flash[:notice] = "Password updated!"
-      redirect_to root_path
-    else
-      render :edit
+    @user=current_user
+        if params[:user][:password] == params[:user][:current_password]
+            flash[:alert] = "Can not use current password"
+            render :password
+        elsif @user&.authenticate(params[:user][:current_password])
+            if @user.update user_params
+                redirect_to edit_user_path, notice: "Successfully changed password"
+            else
+                flash[:alert] = "Passwords did not match"
+                render :password
+            end
+        else
+          flash[:alert] = "Current password incorrect"
+            render :password
+        end
     end
-  end
 
   private
 
@@ -53,6 +63,10 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find params[:id]
+  end
+
+  def authorize_user!
+    redirect_to root_path, alert: 'Not Authorized' unless can?(:crud,@user)
   end
 
 end
